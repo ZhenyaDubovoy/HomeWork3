@@ -1,5 +1,6 @@
 package treeOperations.testTree;
 
+import sun.reflect.generics.tree.Tree;
 import treeOperations.Node;
 import treeOperations.nodeController.TreeNodeMethods;
 
@@ -16,6 +17,8 @@ public class TestTree {
         System.out.print(TreeNodeMethods.printTree(head));
         Node newHead = TreeNodeMethods.MinMaxSwap(head);
         System.out.println(TreeNodeMethods.printTree(newHead));
+        Node newHead1 = TreeNodeMethods.MinMaxSwap(newHead);
+        System.out.println(TreeNodeMethods.printTree(newHead1));
         return;
     }
 }

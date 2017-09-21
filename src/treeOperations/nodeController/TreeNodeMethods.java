@@ -11,7 +11,7 @@ import java.util.List;
 public class TreeNodeMethods {
 
     public static Node newTree(){
-        Node head = new Node(7);
+        Node head = new Node(12);
         Node node1 = new Node(6, head);
         Node node2 = new Node(8, head);
         Node node3 = new Node(10, head);
@@ -116,6 +116,7 @@ public class TreeNodeMethods {
             }
             max.father.children.set(max.father.children.indexOf(max), min);
             min.children = max.children;
+            fathersSet(head);
             return head;
         }
 
@@ -132,6 +133,7 @@ public class TreeNodeMethods {
             }
             min.father.children.set(min.father.children.indexOf(min), max);
             max.children = min.children;
+            fathersSet(head);
             return head;
         }
 
@@ -139,6 +141,8 @@ public class TreeNodeMethods {
         List<Node> tempMinChild = min.children;
         min.children = max.children;
         max.children = tempMinChild;
+
+        fathersSet(head);
 
         return head;
 
@@ -148,5 +152,17 @@ public class TreeNodeMethods {
         Object temp = o1;
         o1 = o2;
         o2 = temp;
+    }
+
+    public static void fathersSet(Node head){
+        if (head.children.isEmpty()){
+            return;
+        }
+
+        for (Node child: head.children) {
+            child.father = head;
+            fathersSet(child);
+        }
+        return;
     }
 }
